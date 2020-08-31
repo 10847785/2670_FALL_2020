@@ -12,6 +12,8 @@ public class CharacterMover : MonoBehaviour
     public float fastMoveSpeed;
     public float jumpForce = 10f;
     public int jumpCountMax;
+    public float rotateSpeed = 3f;
+    private Vector3 rotateMovement;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -19,6 +21,8 @@ public class CharacterMover : MonoBehaviour
     
     void Update()
     {
+        rotateMovement.y = rotateSpeed * Input.GetAxis("Horizontal");
+        transform.Rotate(rotateMovement);
         movement.x = Input.GetAxis("Horizontal")*moveSpeed;
        // To us the GetKey function git rid of Input.GetAxis("Horizontal")*
      //   if (Input.GetKey(KeyCode.Y))
@@ -40,7 +44,8 @@ public class CharacterMover : MonoBehaviour
         {
             movement.y -= gravity;
         }
-        
+
+        movement = transform.TransformDirection(movement);
         controller.Move(movement*Time.deltaTime);
     }
 }
