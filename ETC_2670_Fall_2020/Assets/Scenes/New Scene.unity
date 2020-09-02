@@ -347,7 +347,8 @@ MonoBehaviour:
   moveSpeed: 3
   fastMoveSpeed: 0
   jumpForce: 50
-  jumpCountMax: 0
+  jumpCountMax: 2
+  rotateSpeed: 3
 --- !u!143 &1527607347
 CharacterController:
   m_ObjectHideFlags: 0

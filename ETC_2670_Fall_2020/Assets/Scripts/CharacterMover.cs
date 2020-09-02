@@ -11,9 +11,12 @@ public class CharacterMover : MonoBehaviour
     public float moveSpeed = 3f;
     public float fastMoveSpeed;
     public float jumpForce = 10f;
+    private bool doubleJump;
+    private bool grounded;
     public int jumpCountMax;
     public float rotateSpeed = 3f;
     private Vector3 rotateMovement;
+    
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -29,10 +32,18 @@ public class CharacterMover : MonoBehaviour
      //   {
      //       movement.x *= moveSpeed;
      //   }
+     
         
         if (Input.GetButtonDown("Jump"))
         {
             movement.y = jumpForce;
+            jumpCountMax++;
+            doubleJump = true;
+        }
+
+        if (grounded)
+        {
+            jumpCountMax = 0;
         }
 
         if (controller.isGrounded)
