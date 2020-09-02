@@ -5,58 +5,43 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMover : MonoBehaviour
 {
-    private CharacterController controller;
-    private Vector3 movement;
-    public float gravity = -9.81f;
-    public float moveSpeed = 3f;
-    public float fastMoveSpeed;
-    public float jumpForce = 10f;
-    private bool doubleJump;
-    private bool grounded;
-    public int jumpCountMax;
-    public float rotateSpeed = 3f;
-    private Vector3 rotateMovement;
-    
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-    }
-    
-    void Update()
-    {
-        rotateMovement.y = rotateSpeed * Input.GetAxis("Horizontal");
-        transform.Rotate(rotateMovement);
-        movement.x = Input.GetAxis("Horizontal")*moveSpeed;
-       // To us the GetKey function git rid of Input.GetAxis("Horizontal")*
-     //   if (Input.GetKey(KeyCode.Y))
-     //   {
-     //       movement.x *= moveSpeed;
-     //   }
-     
-        
-        if (Input.GetButtonDown("Jump"))
-        {
-            movement.y = jumpForce;
-            jumpCountMax++;
-            doubleJump = true;
-        }
+   private CharacterController controller;
+   private Vector3 movement;
 
-        if (grounded)
-        {
-            jumpCountMax = 0;
-        }
+   public float moveSpeed = 5f, rotateSpeed = 30f, gravity = -9.81f, jumpForce = 10f;
+   private float yVar;
 
-        if (controller.isGrounded)
-        {
-            movement.y = 0;
-        }
+   public int jumpCountMax = 2;
+   private int jumpCount;
+   
+   private void Start()
+   {
+      controller = GetComponent<CharacterController>();
+   }
+   private void Update()
+   {
+      var vInput = Input.GetAxis("Vertical")*moveSpeed;
+      movement.Set(vInput,yVar,0);
 
-        else
-        {
-            movement.y -= gravity;
-        }
+      var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
+      transform.Rotate(0,hInput, 0);
 
-        movement = transform.TransformDirection(movement);
-        controller.Move(movement*Time.deltaTime);
-    }
+      yVar += gravity * Time.deltaTime;
+
+      if (controller.isGrounded && movement.y < 0)
+      {
+         yVar = -1f;
+         jumpCount = 0;
+      }
+
+      if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
+      {
+         print(jumpCount);
+         yVar = jumpForce;
+         jumpCount++;
+      }
+
+      movement = transform.TransformDirection(movement);
+      controller.Move(movement * Time.deltaTime);
+   }
 }
