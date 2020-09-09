@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +9,15 @@ public class CharacterMover : MonoBehaviour
    private CharacterController controller;
    private Vector3 movement;
 
-   public float moveSpeed = 5f, rotateSpeed = 30f, gravity = -9.81f, jumpForce = 10f;
+   public float rotateSpeed = 30f, gravity = -9.81f, jumpForce = 10f;
    private float yVar;
 
-   public int jumpCountMax = 2;
+   public FloatData moveSpeed, normalSpeed, fastSpeed;
+
+   public IntData playerJumpCount;
    private int jumpCount;
+
+   public Vector3Data currentSpawnPoint;
    
    private void Start()
    {
@@ -20,7 +25,18 @@ public class CharacterMover : MonoBehaviour
    }
    private void Update()
    {
-      var vInput = Input.GetAxis("Vertical")*moveSpeed;
+
+      if (Input.GetKeyDown(KeyCode.LeftShift))
+      {
+         moveSpeed = fastSpeed;
+      }
+
+      if (Input.GetKeyUp(KeyCode.LeftShift))
+      {
+         moveSpeed = normalSpeed;
+      }
+      
+      var vInput = Input.GetAxis("Vertical")*moveSpeed.value;
       movement.Set(vInput,yVar,0);
 
       var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
@@ -34,7 +50,7 @@ public class CharacterMover : MonoBehaviour
          jumpCount = 0;
       }
 
-      if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
+      if (Input.GetButtonDown("Jump") && jumpCount < playerJumpCount.value)
       {
          print(jumpCount);
          yVar = jumpForce;
@@ -43,5 +59,15 @@ public class CharacterMover : MonoBehaviour
 
       movement = transform.TransformDirection(movement);
       controller.Move(movement * Time.deltaTime);
+   }
+
+   private void OnParticleTrigger(Collider other)
+   {
+      // Set the location data of the player to the current spawnPoint
+   }
+
+   private void OnEnable()
+   {
+      // Set the position of the player to the location data of the player
    }
 }
