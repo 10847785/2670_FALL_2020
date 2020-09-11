@@ -60,14 +60,13 @@ public class CharacterMover : MonoBehaviour
       movement = transform.TransformDirection(movement);
       controller.Move(movement * Time.deltaTime);
    }
-
-   private void OnParticleTrigger(Collider other)
-   {
-      // Set the location data of the player to the current spawnPoint
-   }
+   
 
    private void OnEnable()
    {
       // Set the position of the player to the location data of the player
+      playerJumpCount.value = powerUpCount.value;
+      GetComponent<MeshRenderer>().enabled = false;
+      GetComponent<Collider>().enabled = false;
    }
 }
