@@ -16,6 +16,7 @@ public class CharacterMover : MonoBehaviour
 
    public IntData playerJumpCount;
    private int jumpCount;
+   public IntData playerSpawn, spawnLocate;
 
    public Vector3Data currentSpawnPoint;
    
@@ -65,8 +66,7 @@ public class CharacterMover : MonoBehaviour
    private void OnEnable()
    {
       // Set the position of the player to the location data of the player
-      playerJumpCount.value = powerUpCount.value;
-      GetComponent<MeshRenderer>().enabled = false;
-      GetComponent<Collider>().enabled = false;
+      playerSpawn.value = spawnLocate.value;
+      
    }
 }

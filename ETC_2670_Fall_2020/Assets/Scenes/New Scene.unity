@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 1527607348}
   - component: {fileID: 1527607346}
   - component: {fileID: 1527607347}
+  - component: {fileID: 1527607351}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -763,7 +764,9 @@ MonoBehaviour:
   normalSpeed: {fileID: 11400000, guid: 12d7a798631bd5b44aa0038a6eb3b6d0, type: 2}
   fastSpeed: {fileID: 11400000, guid: e5bd207802a89f14badc3689eeff8cc0, type: 2}
   playerJumpCount: {fileID: 11400000, guid: 9bd9f29d9d618d64492613b7a69bf55e, type: 2}
-  currentSpawnPoint: {fileID: 0}
+  playerSpawn: {fileID: 0}
+  spawnLocate: {fileID: 0}
+  currentSpawnPoint: {fileID: 11400000, guid: e5f232529c5b53748980dcc8f8cd4562, type: 2}
 --- !u!143 &1527607347
 CharacterController:
   m_ObjectHideFlags: 0
@@ -846,6 +849,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -88.28, z: 0}
+--- !u!114 &1527607351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527607345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1198ffe025dab4ea824113dae3bd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAmount: 0
 --- !u!1 &1790027935
 GameObject:
   m_ObjectHideFlags: 0

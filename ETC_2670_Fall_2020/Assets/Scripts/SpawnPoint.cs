@@ -8,8 +8,10 @@ public class SpawnPoint : MonoBehaviour
     
     // Set the vData from the position value
     
+    
     private void OnParticleTrigger(Collider other)
     {
         // Set the location data of the player to the current spawnPoint
+        transform.TransformVector(0, 0, 0);
     }
 }
