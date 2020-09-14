@@ -7,6 +7,12 @@ public class SpawnPoint : MonoBehaviour
     public Vector3Data vData;
     
     // Set the vData from the position value
+    transform.position
+
+    private class transform
+    {
+        new Vector3Data(HorizontalInput * Time.deltaTime, VerticalInput * Time.deltaTime, 0);
+    } 
     
     
     private void OnParticleTrigger(Collider other)
@@ -15,3 +21,5 @@ public class SpawnPoint : MonoBehaviour
         transform.TransformVector(0, 0, 0);
     }
 }
+
+
