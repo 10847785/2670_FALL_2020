@@ -13,10 +13,10 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        healthAmount -= amount;
-        if (healthAmount <= 0)
+     //   healthAmount -= amount;
+     //   if (healthAmount <= 0)
         {
-            healthAmount = 0;
+      //      healthAmount = 0;
         }
     }
     
