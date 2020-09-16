@@ -7,6 +7,8 @@ public class ApplyForce : MonoBehaviour
 {
     private Rigidbody rBody;
     public float force = 30f;
+
+    public GameObject projectilePrefab;
     
 
     void Start()
@@ -18,10 +20,15 @@ public class ApplyForce : MonoBehaviour
     }
     
     //need a firing method
+   
 
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
+        }
         
     }
 }
