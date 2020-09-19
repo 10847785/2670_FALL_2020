@@ -18,9 +18,7 @@ public class ApplyForce : MonoBehaviour
        //forceDirection needs to be based on Player rotation (hint ScriptableObject)
        rBody.AddRelativeForce(forceDirection);
     }
-    
-    //need a firing method
-   
+
 
 
     void Update()
