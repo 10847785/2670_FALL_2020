@@ -160,9 +160,9 @@ MonoBehaviour:
   gravity: -9.81
   jumpForce: 10
   moveSpeed: {fileID: 11400000, guid: 12d7a798631bd5b44aa0038a6eb3b6d0, type: 2}
-  normalSpeed: {fileID: 0}
-  fastSpeed: {fileID: 0}
-  playerJumpCount: {fileID: 0}
+  normalSpeed: {fileID: 11400000, guid: 12d7a798631bd5b44aa0038a6eb3b6d0, type: 2}
+  fastSpeed: {fileID: 11400000, guid: e5bd207802a89f14badc3689eeff8cc0, type: 2}
+  playerJumpCount: {fileID: 11400000, guid: 9bd9f29d9d618d64492613b7a69bf55e, type: 2}
   currentSpawnPoint: {fileID: 0}
 --- !u!143 &61475113
 CharacterController:
@@ -256,103 +256,7 @@ Transform:
   m_LocalPosition: {x: 8.160443, y: 7.76, z: -11.593306}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2132485407}
   - {fileID: 590605746}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &232545842
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 232545846}
-  - component: {fileID: 232545845}
-  - component: {fileID: 232545844}
-  - component: {fileID: 232545843}
-  m_Layer: 0
-  m_Name: LookAtAim
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!135 &232545843
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232545842}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &232545844
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232545842}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &232545845
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232545842}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &232545846
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232545842}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.85, y: 6.12, z: -10.72}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -389,7 +293,7 @@ Transform:
   m_Children:
   - {fileID: 989685046}
   m_Father: {fileID: 61475117}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &590605747
 MonoBehaviour:
@@ -400,7 +304,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 590605745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1e325c58e395746847e7c21eeb2ad7, type: 3}
+  m_Script: {fileID: 11500000, guid: f6c4b585ff15ac446b7fc19eba06a468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookObj: {fileID: 0}
@@ -556,7 +460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &989685045
 GameObject:
@@ -680,8 +584,8 @@ GameObject:
   - component: {fileID: 1531134441}
   - component: {fileID: 1531134440}
   - component: {fileID: 1531134439}
+  - component: {fileID: 1531134444}
   - component: {fileID: 1531134438}
-  - component: {fileID: 1531134443}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -698,36 +602,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1531134437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc5b9926f0497341907609f6405edb6, type: 3}
+  m_Script: {fileID: 11500000, guid: afeaa94e151a411478fc7a503131e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseDownEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1531134443}
-        m_TargetAssemblyTypeName: MoveLocator, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MoveLocator, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  locationData: {fileID: 11400000, guid: 80516770b46104b46839c9bc90819a03, type: 2}
 --- !u!64 &1531134439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -803,9 +681,9 @@ Transform:
   m_LocalScale: {x: 2.4316, y: 2.4316, z: 2.4316}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1531134443
+--- !u!114 &1531134444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -814,10 +692,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 1531134437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec28f041a38d904baef18f1e669cce2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cc5b9926f0497341907609f6405edb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointObj: {fileID: 232545846}
+  mouseDownEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 590605745}
+        m_TargetAssemblyTypeName: Vector3Data, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2e78ef0b045d9a04bb8204bfd1997f6e, type: 2}
+        m_TargetAssemblyTypeName: Vector3Data, Assembly-CSharp
+        m_MethodName: SetValueFromPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 590605746}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: b55490eb0b61def4abe8940816031d62, type: 3}
+        m_TargetAssemblyTypeName: Vector3Data, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2132485404
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,9 +811,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132485404}
   m_LocalRotation: {x: 0.42289922, y: -0.000000029802322, z: 0.0000000039062584, w: 0.9061768}
-  m_LocalPosition: {x: 0.62955666, y: 6.07, z: -5.06}
+  m_LocalPosition: {x: 8.79, y: 15.6, z: -19.203306}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 61475117}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50.036, y: 0, z: 0}
