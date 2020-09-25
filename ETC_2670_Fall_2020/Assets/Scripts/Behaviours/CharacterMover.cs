@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -12,7 +10,8 @@ public class CharacterMover : MonoBehaviour
    public float rotateSpeed = 30f, gravity = -9.81f, jumpForce = 10f;
    private float yVar;
 
-   public FloatData moveSpeed, normalSpeed, fastSpeed;
+   public FloatData normalSpeed, fastSpeed;
+   private FloatData moveSpeed;
 
    public IntData playerJumpCount;
    private int jumpCount;
@@ -55,7 +54,6 @@ public class CharacterMover : MonoBehaviour
 
       if (Input.GetButtonDown("Jump") && jumpCount < playerJumpCount.value)
       {
-         print(jumpCount);
          yVar = jumpForce;
          jumpCount++;
       }

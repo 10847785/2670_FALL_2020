@@ -9,7 +9,7 @@ public class InstancerBehaviour : MonoBehaviour
     public Vector3Data rotationDirection;
     //Make a method to call the Instance Method
 
-    private void Instance()
+    public void Instance()
     {
         var location = transform.position;
         Instantiate(prefab,location, Quaternion.Euler(rotationDirection.value));

@@ -12,7 +12,7 @@ public class SpawnPointBehaviour : MonoBehaviour
 
   private void OnParticleTrigger(Collider other)
     {
-        vData.SetValueFromTransform(transform.position);
+        //vData.SetValueFromTransform(transform.position);
     }
 }
 
