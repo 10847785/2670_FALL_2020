@@ -16,7 +16,7 @@ public class CharacterMover : MonoBehaviour
    public IntData playerJumpCount;
    private int jumpCount;
 
-   public Vector3Data currentSpawnPoint;
+   
    
    private void Start()
    {
@@ -62,9 +62,4 @@ public class CharacterMover : MonoBehaviour
       controller.Move(movement * Time.deltaTime);
    }
    
-
-   private void OnEnable()
-   {
-      transform.position = currentSpawnPoint.value;
-   }
-}
+ }
