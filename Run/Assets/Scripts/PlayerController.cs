@@ -5,39 +5,48 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Vector3 = UnityEngine.Vector3;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 20;
-    public float rotateSpeed = 30f;
-    private Rigidbody rbody;
-    public float normalSpeed, fastSpeed;
+    private FloatData moveSpeed;
+    public FloatData normalSpeed, fastSpeed;
+    public float rotateSpeed = 120, gravity = -9.81f;
+ 
+    private CharacterController controller;
     private Vector3 movement;
-   
-
-    void Start()
+    private float yVar;
+    private void Start()
     {
-        rbody = GetComponent<Rigidbody>();
+        moveSpeed = normalSpeed;
+        controller = GetComponent<CharacterController>();
+       
     }
 
-    void Update()
+    private void Update()
     {
-        var horAxis = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
-        transform.Rotate(0,horAxis,0);
-        var vertAxis = Input.GetAxis("Vertical");
+        var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
+        transform.Rotate(0,hInput,0);
         
-        Vector3 movement = new Vector3(horAxis, 0, vertAxis) * moveSpeed * Time.deltaTime;
+        var vInput = Input.GetAxis("Vertical")*moveSpeed.value;
+        movement.Set(vInput, yVar, 0);
         
-        rbody.MovePosition(transform.position + movement);
-
+       
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            moveSpeed = 50;
+            moveSpeed = fastSpeed;
         }
 
-        else
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            moveSpeed = 20;
+            moveSpeed = normalSpeed;
         }
-       
+
+        if (controller.isGrounded && movement.y < 0)
+        {
+            yVar = -1f;
+        }        
+        
+        movement = transform.TransformDirection(movement);
+        controller.Move(movement * Time.deltaTime);
     }
 }
