@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterKnockBack : MonoBehaviour
 {
-    //Direction of the hit
-    
     public CharacterController controller;
-    private Vector3 move = Vector3.zero;
-    public Vector3 knockBackVector;
-    public float knockBackForce = 50f;
-    private float tempForce;
+    Vector3 movement = Vector3.zero;
+    
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        tempForce = knockBackForce;
     }
-
-    private void Update()
+    
+    private IEnumerator KnockBack(ControllerColliderHit hit)
     {
-        controller.Move(move * Time.deltaTime);
+        var i = 2f;
+        movement = hit.collider.attachedRigidbody.velocity * i;
+        while (i > 0)
+        {
+            yield return new WaitForFixedUpdate();
+            i -= 0.1f;
+            controller.Move(movement);
+        }
+
+        movement = Vector3.zero;
     }
 
     private float pushPower = 10.0f;
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-       // StartCoroutine(knockBack(hit));
-       var body = hit.collider.attachedRigidbody;
+        var body = hit.collider.attachedRigidbody;
 
        if (body == null || body.isKinematic)
        {
@@ -39,25 +42,13 @@ public class CharacterKnockBack : MonoBehaviour
            return;
        }
        
-       StartCoroutine(knockBack(hit));
+       StartCoroutine(KnockBack(hit));
        
        var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-      // body.velocity = pushDir * pushPower;
        var forces = pushDir * pushPower;
-       body.AddRelativeForce(forces);
-       body.AddTorque(forces);
+       body.velocity = forces;
     }
-
-    private IEnumerator KnockBack(ControllerColliderHit hit)
-    {
-        var i = 2f;
-        move = hit.collider.attachedRigidbody.velocity * i;
-        while (i > 0)
-        {
-            knockBackVector.x = knockBackForce * Time.deltaTime;
-            controller.Move(knockBackVector);
-            knockBackForce -= 0.1f;
-            yield return new WaitForFixedUpdate();
-        }
-    }
+    
+    
+    
 }
