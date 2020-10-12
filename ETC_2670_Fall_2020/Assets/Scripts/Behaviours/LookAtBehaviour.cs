@@ -9,7 +9,7 @@ public class LookAtBehaviour : MonoBehaviour
         var transformRotation = transform.eulerAngles;
         transformRotation.x = 0;
         transformRotation.y -= 90;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Euler(transformRotation);
         
     }
 }
