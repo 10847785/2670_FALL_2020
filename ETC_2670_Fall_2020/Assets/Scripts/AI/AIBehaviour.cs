@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +11,8 @@ public class AIBehaviour : MonoBehaviour
    private WaitForFixedUpdate wffu = new WaitForFixedUpdate();
    private NavMeshAgent agent;
    public Transform player;
-   private bool canNav = true;
+   private bool canHunt, canNav, canPatrol = true;
+   public List<Transform> patrolPoints;
 
    private void Start()
    {
@@ -18,7 +21,8 @@ public class AIBehaviour : MonoBehaviour
 
    private IEnumerator OnTriggerEnter(Collider other)
    {
-      canNav = true;
+      canHunt = true;
+      canPatrol = false;
       agent.destination = player.position;
       var distance = agent.remainingDistance;
       while (distance <= 0.25f)
@@ -28,14 +32,31 @@ public class AIBehaviour : MonoBehaviour
       }
       yield return new WaitForSeconds(2f);
       
-      if (canNav)
-      {
-         StartCoroutine(OnTriggerEnter(other));
-      }
+      
+      StartCoroutine(canHunt ? OnTriggerEnter(other) : Patrol());
+      
+      
    }
 
    private void OnTriggerExit(Collider other)
    {
       canNav = false;
+      //StartCoroutine(Patrol());
+   }
+   
+   private int i = 0;
+
+   private IEnumerator Patrol()
+   {
+      canPatrol = true;
+      while (canPatrol)
+      {
+         yield return wffu;
+         if (agent.pathPending || !(agent.remainingDistance < 0.5f)) continue; 
+         agent.destination = patrolPoints[i].position;
+         i = (i + 1) % patrolPoints.Count;
+      }
+      
+
    }
 }
