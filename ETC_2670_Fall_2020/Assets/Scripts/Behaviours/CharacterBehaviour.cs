@@ -6,47 +6,52 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterBehaviour : MonoBehaviour
 {
-    public float rotateSpeed = 30f, gravity = -9.81f, jumpForce = 10f;
+    public float rotateSpeed = 120f, gravity = -9.81f, jumpForce = 10f;
     public FloatData normalSpeed, fastSpeed;
     public IntData playerJumpCount;
     
     private float yVar;
-    private FloatData moveSpeed;
     private int jumpCount;
     
     protected CharacterController controller;
     protected Vector3 movement;
     protected bool canMove = true;
     protected readonly WaitForFixedUpdate wffu = new WaitForFixedUpdate();
+    protected float vInput, hInput;
+    protected FloatData moveSpeed;
 
    private void Start()
    {
        moveSpeed = normalSpeed;
        controller = GetComponent<CharacterController>();
        StartCoroutine(Move());
+   }
+
+   protected IEnumerator Move()
+   {
        canMove = true;
        while (canMove)
        {
            //different Code
-           OnRotate();
            OnMove();
            yield return wffu;
        }
-   }
-
-   private IEnumerator Move()
-   {
-       
 
    }
 
-   protected virtual void OnRotate()
+   protected virtual void OnHorizontal()
    {
-       var hInput = Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed;
+       hInput = Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed;
        transform.Rotate(0, hInput, 0);
    }
 
-   private void OnMove()
+   protected virtual void OnVertical()
+   {
+       vInput = Input.GetAxis("Vertical") * moveSpeed.value;
+       movement.Set(vInput, yVar, 0);
+   }
+
+   protected void OnMove()
    {
        if (Input.GetKeyDown(KeyCode.LeftShift))
        {
@@ -57,12 +62,12 @@ public class CharacterBehaviour : MonoBehaviour
        {
            moveSpeed = normalSpeed;
        }
-
-       var vInput = Input.GetAxis("Vertical") * moveSpeed.value;
-       movement.Set(vInput, yVar, 0);
+       
+       OnHorizontal();
+       OnVertical();
 
        yVar += gravity * Time.deltaTime;
-
+       
        if (controller.isGrounded && movement.y < 0)
        {
            yVar = -1f;
@@ -77,5 +82,10 @@ public class CharacterBehaviour : MonoBehaviour
        
        movement = transform.TransformDirection(movement);
        controller.Move(movement * Time.deltaTime);
+   }
+
+   protected virtual void OnRotate()
+   {
+       throw new NotImplementedException();
    }
 }

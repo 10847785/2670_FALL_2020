@@ -1,13 +1,13 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [CreateAssetMenu]
 
 public class FloatData : ScriptableObject
 {
     public float value;
-    public UnityEvent LessThanZeroEvent;
+    public UnityEvent lessThanZeroEvent;
 
     public void SetValue(float number)
     {
@@ -26,9 +26,10 @@ public class FloatData : ScriptableObject
             img.fillAmount = value;
         }
 
-        if (value < 0)
+        if (value <= 0)
         {
-            LessThanZeroEvent.Invoke();
+            lessThanZeroEvent.Invoke();
+            value = 0;
         }
 
         if (value >= 1)

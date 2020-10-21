@@ -4,13 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterBehaviourWithKnockBack : CharacterBehaviour
 {
-   
-
-}
+   public float pushPower = 10f;
    private IEnumerator KnockBack(ControllerColliderHit hit, Rigidbody body)
    {
       canMove = false;
       var i = 2f;
+      
       movement = -hit.moveDirection;
       movement.y = -1;
       while (i > 0)
@@ -28,9 +27,6 @@ public class CharacterBehaviourWithKnockBack : CharacterBehaviour
       StartCoroutine(Move());
    }
    
-   public float pushPower = 10.0f;
-   private CharacterController characterController;
-
    void OnControllerColliderHit(ControllerColliderHit hit)
    {
       var body = hit.collider.attachedRigidbody;
