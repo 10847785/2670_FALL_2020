@@ -18,4 +18,6 @@ public class TriggerEventBehaviour : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         TriggerEnterEvent.Invoke();
     }
+    
+    private 
 }
