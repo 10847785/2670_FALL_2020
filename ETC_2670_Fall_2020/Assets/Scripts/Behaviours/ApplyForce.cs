@@ -1,14 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ApplyForce : MonoBehaviour
 {
     private Rigidbody rBody;
-    public float force = 30f;
+    public Vector3 forces;
 
-    public GameObject projectilePrefab;
+    public bool canRunOnStart;
+
+    private void Start()
+    {
+        rBody = GetComponent<Rigidbody>();
+        if (canRunOnStart)
+        {
+            OnApplyForce();
+        }
+    }
+
+    public void OnApplyForce()
+    {
+        rBody.AddRelativeForce(forces);
+    }
+
+  /*  public GameObject projectilePrefab;
     
 
     void Start()
@@ -28,5 +43,5 @@ public class ApplyForce : MonoBehaviour
             Instantiate(projectilePrefab, transform.position, transform.rotation);
         }
         
-    }
+    } */
 }
