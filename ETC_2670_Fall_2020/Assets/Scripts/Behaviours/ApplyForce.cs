@@ -22,26 +22,4 @@ public class ApplyForce : MonoBehaviour
     {
         rBody.AddRelativeForce(forces);
     }
-
-  /*  public GameObject projectilePrefab;
-    
-
-    void Start()
-    { 
-        rBody = GetComponent<Rigidbody>();
-       var forceDirection = new Vector3(force,0,0);
-       //forceDirection needs to be based on Player rotation (hint ScriptableObject)
-       rBody.AddRelativeForce(forceDirection);
-    }
-
-
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Instantiate(projectilePrefab, transform.position, transform.rotation);
-        }
-        
-    } */
 }

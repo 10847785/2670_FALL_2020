@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterBehaviour : MonoBehaviour
@@ -20,11 +20,16 @@ public class CharacterBehaviour : MonoBehaviour
     protected float vInput, hInput;
     protected FloatData moveSpeed;
 
-   private void Start()
+   private void OnEnable()
    {
        moveSpeed = normalSpeed;
        controller = GetComponent<CharacterController>();
        StartCoroutine(Move());
+   }
+
+   private void OnDisable()
+   {
+       StopAllCoroutines();
    }
 
    protected IEnumerator Move()
@@ -51,7 +56,7 @@ public class CharacterBehaviour : MonoBehaviour
        movement.Set(vInput, yVar, 0);
    }
 
-   protected void OnMove()
+   private void OnMove()
    {
        if (Input.GetKeyDown(KeyCode.LeftShift))
        {
@@ -82,10 +87,5 @@ public class CharacterBehaviour : MonoBehaviour
        
        movement = transform.TransformDirection(movement);
        controller.Move(movement * Time.deltaTime);
-   }
-
-   protected virtual void OnRotate()
-   {
-       throw new NotImplementedException();
    }
 }

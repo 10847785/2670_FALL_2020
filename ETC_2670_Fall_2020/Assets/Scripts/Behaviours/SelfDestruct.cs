@@ -8,6 +8,10 @@ public class SelfDestruct : MonoBehaviour
     IEnumerable Start()
     {
         yield return new WaitForSeconds(2f);
+    }
+
+    public void OnDisable()
+    {
         Destroy(gameObject);
     }
     

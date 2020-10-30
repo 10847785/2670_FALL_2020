@@ -11,15 +11,14 @@ public class Coroutines : MonoBehaviour
 
     private IEnumerator Start()
     {
-        
         while (counter > 0)
         {
-            yield return new WaitForFixedUpdate();
+            yield return wffu;
             transform.Translate(0.1f, 0,0);
             counter--;
         }
         
-     //   yield return new wfs(1);
+        yield return wfs;
         
         while (counter < 100)
         {
@@ -28,7 +27,7 @@ public class Coroutines : MonoBehaviour
             counter++;
         }
         
-       // yield return new wfs;
+        yield return wfs;
 
         StartCoroutine(Start());
     }

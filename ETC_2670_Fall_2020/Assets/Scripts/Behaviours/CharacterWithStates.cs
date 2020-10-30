@@ -9,7 +9,7 @@ public class CharacterWithStates : MonoBehaviour
     
     private Vector3 movement;
     public float moveSpeed = 3;
-    public float gravity = 9.81f;
+    public float gravity = -9.81f;
 
     private void Start()
     {

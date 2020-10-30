@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class GameActionHandler : MonoBehaviour
 {
-    public GameAction gameAction;
+    public GameActionHand gameAction;
     public UnityEvent handlerEvent;
     public float holdTime = 3f;
     
@@ -17,7 +17,11 @@ public class GameActionHandler : MonoBehaviour
     {
         Invoke(nameof(handlerEvent), holdTime);
     }
-    
+
+    private void OnActionHandler()
+    {
+        handlerEvent.Invoke();
+    }
 }
 
 
