@@ -4,7 +4,7 @@ public class CharacterMouseLookAt : CharacterBehaviour
 {
     public Vector3Data mouseLocation;
     
-      protected override void OnRotate()
+      protected override void OnHorizontal()
       {
           Transform transform1;
           (transform1 = transform).LookAt(mouseLocation.value);
