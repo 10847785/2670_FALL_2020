@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FloatData : ScriptableObject
 {
     public float value;
-    public UnityEvent lessThanZeroEvent;
+    public UnityEvent steValueEvent, updateValueEvent, lessThanZeroEvent;
 
     public void SetValue(float number)
     {
