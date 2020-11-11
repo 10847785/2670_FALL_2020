@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -8,14 +6,15 @@ public class NavAgentBehaviour : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Transform destination;
-   // public GameAction gameActionObj;
+   // public GameAction getTransformAction, callForTransformAction;
    private bool canNav;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         destination = transform;
-       // gameActionObj.transformAction += HandleTransform;
+       // getTransformAction.transformAction += HandleTransform;
+       //callForTransformAction.action.Invoke();
     }
 
     private void HandleTransform(Transform obj)
