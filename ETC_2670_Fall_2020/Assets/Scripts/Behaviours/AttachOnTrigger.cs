@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
-public class AttachOnTrigger : MonoBehaviour
+public partial class AttachOnTrigger : MonoBehaviour
 {
+    public StringData tagObj;
+    public ID idObj;
+
     private void OnTriggerEnter(Collider other)
     {
-        var otherTag = other.CompareTag("Platform");
-        if (otherTag)
-        {
-            transform.parent = other.transform; 
-        }
+        if (other.CompareTag(tagObj.value)) return;
+        // var newObj = GetComponent<IDHolder>().ideObj;
+        //  if (newObj == null) return;
+        transform.parent = other.transform;
     }
 
     private void OnTriggerExit(Collider other)
