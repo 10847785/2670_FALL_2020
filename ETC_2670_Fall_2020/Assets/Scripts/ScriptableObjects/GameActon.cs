@@ -9,7 +9,7 @@ public class GameActon : ScriptableObject
 
    public void Raise()
    {
-      action?.Invoke();
+      action.Invoke();
    }
 
    public void Raise(Transform obj)
